@@ -1,7 +1,7 @@
 package podhajecka.Main.Stack.Stack;
 
-import podhajecka.Main.Stack.Exception.StackOverflow;
-import podhajecka.Main.Stack.Exception.StackUnderflow;
+import podhajecka.Main.Stack.Exception.Overflow;
+import podhajecka.Main.Stack.Exception.Underflow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +27,17 @@ public class Stack<T> {
     public int getSize() {
         return size;
     }
-    public void push(T obj) throws StackOverflow {
+    public void push(T obj) throws Overflow {
         if(obj==null)
             return;
        if(!isFull()){
             list.add(obj);
             size++;
        }
-        else throw new StackOverflow("a stack is full");
+        else throw new Overflow("a stack is full");
 
     }
-    public T top() throws StackUnderflow {
+    public T top() throws Underflow {
         if(isEmpty()){
             return null;
         }else{
@@ -45,9 +45,9 @@ public class Stack<T> {
         }
 
     }
-    public void pop() throws StackUnderflow {
+    public void pop() throws Underflow {
         if(isEmpty()){
-            throw new StackUnderflow("a stack is empty");
+            throw new Underflow("a stack is empty");
         }
         else {
             list.remove(size-1);
@@ -55,7 +55,7 @@ public class Stack<T> {
 
         }
     }
-    public T topAndPop() throws StackUnderflow {
+    public T topAndPop() throws Underflow {
         T temp = top();
         pop();
         return temp;
